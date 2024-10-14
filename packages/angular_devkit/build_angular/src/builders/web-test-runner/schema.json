@@ -249,6 +249,10 @@
     "webWorkerTsConfig": {
       "type": "string",
       "description": "TypeScript configuration for Web Worker modules."
+    },
+    "wtrConfig": {
+      "type": "string",
+      "description": "Web Test Runner configuration."
     }
   },
   "additionalProperties": false,

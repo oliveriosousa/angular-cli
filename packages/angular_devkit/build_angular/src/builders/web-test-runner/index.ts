@@ -103,6 +103,8 @@ async function buildTests(
           vendor: true,
         },
         polyfills,
+        scripts: options.scripts,
+        styles: options.styles
       },
       ctx,
     ),
@@ -137,6 +139,7 @@ async function runTests(
       files: [
         `${testDir}/**/*.js`,
         `!${testDir}/polyfills.js`,
+        `!${testDir}/scripts.js`,
         `!${testDir}/chunk-*.js`,
         `!${testDir}/jasmine.js`,
         `!${testDir}/jasmine_runner.js`,
@@ -153,8 +156,9 @@ async function runTests(
 
       testRunnerHtml: (_testFramework, _config) => testPage,
     },
+    configName: options.wtrConfig,
     readCliArgs: false,
-    readFileConfig: false,
+    readFileConfig: options.wtrConfig ?? false,
     autoExitProcess: false,
   });
   if (!runner) {
